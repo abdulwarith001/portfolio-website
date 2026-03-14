@@ -1,0 +1,46 @@
+[
+  {
+    "id": "noteiq-ceo",
+    "company": "NoteIQ",
+    "role": "CEO & Founder",
+    "duration": "2025 — Present",
+    "achievements": [
+      "Founded and launched an AI-powered educational platform serving students globally.",
+      "Architected a custom RAG (Retrieval-Augmented Generation) pipeline for document processing.",
+      "Built cross-platform experiences using Next.js and React Native."
+    ]
+  },
+  {
+    "id": "paypaxe-eng",
+    "company": "Paypaxe",
+    "role": "Fullstack Mobile Engineer",
+    "duration": "Dec 2024 — Present",
+    "achievements": [
+      "Developed and maintained high-performance fintech mobile applications using React Native.",
+      "Implemented secure payment processing and digital wallet systems for SMEs in Nigeria.",
+      "Optimized app performance and reduced load times by 30%."
+    ]
+  },
+  {
+    "id": "rogers-eng",
+    "company": "Rogers and Co.",
+    "role": "Backend Developer",
+    "duration": "Feb 2024 — Dec 2025",
+    "achievements": [
+      "Engineered robust backend APIs using Node.js and MongoDB.",
+      "Improved system reliability through rigorous testing and code reviews.",
+      "Streamlined data processing workflows for large-scale operations."
+    ]
+  },
+  {
+    "id": "luckywho-eng",
+    "company": "Luckywho",
+    "role": "Backend Engineer",
+    "duration": "Dec 2023 — Dec 2024",
+    "achievements": [
+      "Developed a transparent digital raffle platform with verifiable randomness.",
+      "Architected a high-velocity ticketing engine supporting thousands of concurrent users.",
+      "Ensured 100% auditability and financial integrity for all transactions."
+    ]
+  }
+]

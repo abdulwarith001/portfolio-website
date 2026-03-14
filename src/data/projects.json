@@ -1,0 +1,200 @@
+[
+  {
+    "id": "paypaxe-web",
+    "title": "Paypaxe Web",
+    "category": "Fintech & Payroll",
+    "shortDescription": "Personal finance management and automated payroll platform for individuals and SMEs in Africa.",
+    "whatWasDone": [
+      "Designed and developed a full-stack fintech platform enabling individuals and SMEs to manage payroll, savings, and investments in a unified ecosystem.",
+      "Built the frontend application using React and TypeScript, creating responsive dashboards and financial management interfaces for users, freelancers and businesses.",
+      "Engineered a payroll processing engine for Nigerian SMEs to automate salary payments, PAYE tax computation, and statutory deductions.",
+      "Implemented secure digital wallet infrastructure for user balances, transfers, and transaction tracking.",
+      "Developed an 'Esusu/Ajo' cooperative savings module that digitizes traditional group savings systems.",
+      "Architected backend APIs and cloud infrastructure to support scalable and secure financial operations."
+    ],
+    "image": "/src/assets/images/paypaxe.png",
+    "technologies": [
+      "React.js",
+      "AWS",
+      "Node.js",
+      "MongoDB",
+      "Docker",
+      "TypeScript",
+      "Redux Toolkit"
+    ],
+    "liveLink": "https://paypaxe.com"
+  },
+  {
+    "id": "paypaxe-mobile",
+    "title": "Paypaxe Mobile",
+    "category": "Mobile App",
+    "shortDescription": "Cross-platform fintech application for seamless personal finance and payroll management.",
+    "whatWasDone": [
+      "Developed a cross-platform fintech mobile application using React Native and TypeScript for iOS and Android.",
+      "Built responsive financial dashboards and transaction interfaces enabling users to manage wallet balances, savings, and budgets directly from mobile.",
+      "Optimized the app for low-bandwidth and unstable network environments common in emerging markets.",
+      "Implemented biometric authentication and secure session handling to protect sensitive financial data.",
+      "Integrated real-time push notifications to keep users updated on financial events.",
+      "Managed global state and financial data flows using Redux Toolkit for predictable and scalable state management.",
+      "Released the application to production on the Google Play Store, achieving 100+ downloads."
+    ],
+    "image": "/src/assets/images/paypaxe-app.png",
+    "technologies": [
+      "React Native",
+      "TypeScript",
+      "Redux Toolkit",
+      "Expo",
+      "REST APIs",
+      "Push Notifications",
+      "Biometric Authentication"
+    ],
+    "liveLink": "https://play.google.com/store/apps/details?id=com.paypaxe.paypaxe"
+  },
+  {
+    "id": "noteiq-web",
+    "title": "NoteIQ Web",
+    "category": "EdTech & AI",
+    "shortDescription": "Transform your notes into interactive learning experiences. Study less, understand more.",
+    "whatWasDone": [
+      "Founded and built an AI-powered platform that turns messy notes, documents, images, and recordings into clean, structured study materials.",
+      "Integrated OpenAI LLMs to automatically generate summaries, quizzes, and flashcards so users can study faster and retain more.",
+      "Built a fast and responsive web interface with React and Vite, focusing on creating an intuitive and efficient study experience.",
+      "Developed backend workflows to process user uploads and transform them into interactive learning content.",
+      "Integrated Paystack to enable credit based payments for advanced AI-powered study features."
+    ],
+    "image": "/src/assets/images/noteiq.png",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Node.js",
+      "OpenAI GPT",
+      "REST APIs",
+      "Paystack",
+      "AI Prompt Engineering",
+      "Audio Processing"
+    ],
+    "liveLink": "https://noteiq.live"
+  },
+  {
+    "id": "noteiq-mobile",
+    "title": "NoteIQ Mobile",
+    "category": "Mobile App",
+    "shortDescription": "React Native-powered learning companion for hands-free study and mobile notes.",
+    "whatWasDone": [
+      "Brought NoteIQ’s AI-powered study tools to mobile using React Native and Expo, creating a seamless, on-the-go learning experience.",
+      "Built a low-latency transcription interface so users can turn lectures and voice notes into searchable study material instantly.",
+      "Implemented on-device study reminders and progress tracking to keep users engaged wherever they are.",
+      "Managed complex global state with Redux Toolkit, keeping study data perfectly in sync across web and mobile platforms.",
+      "Optimized the mobile UI for accessibility and distraction-free study sessions, making learning smoother and more enjoyable."
+    ],
+    "image": "/src/assets/images/noteiq-app.png",
+    "technologies": [
+      "React Native",
+      "TypeScript",
+      "Expo",
+      "Redux Toolkit",
+      "OpenAI API",
+      "Whisper AI",
+      "REST APIs",
+      "Push Notifications"
+    ],
+    "liveLink": "https://play.google.com/store/apps/details?id=com.enigmare.noteiq"
+  },
+  {
+    "id": "nova",
+    "title": "Nova Agent",
+    "category": "Autonomous AI",
+    "shortDescription": "High-performance local reasoning engine with OODA loop self-correction, parallel execution, and autonomous task management.",
+    "whatWasDone": [
+      "Built a high-performance autonomous agent that executes multi-step workflows locally with minimal supervision.",
+      "Integrated a continuous OODA (Observe, Orient, Decide, Act) loop for real-time self-correction and adaptive decision-making.",
+      "Implemented parallel task execution using Node.js workers and Piscina, enabling simultaneous browsing, scripting, and API calls.",
+      "Designed a Markdown-first persistent memory system to store long-term tasks, goals, and context securely.",
+      "Enabled proactive automation with Telegram notifications, recurring tasks, and Google Workspace integrations.",
+      "Packaged the agent as an NPM module with CLI and WebSocket support for developer adoption and custom frontends."
+    ],
+    "technologies": [
+      "Node.js",
+      "Piscina",
+      "Telegram API",
+      "CLI Interface",
+      "WebSocket API",
+      "Markdown Memory Store",
+      "OODA Loop Reasoning Engine",
+      "Parallel Task Execution",
+      "Web Intelligence & Browser Automation",
+      "Google Workspace API Integration"
+    ],
+    "githubLink": "https://github.com/abdulwarith001/nova",
+    "liveLink": "https://www.npmjs.com/package/novaa-agent",
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "openlaw",
+    "title": "OpenLaw",
+    "category": "AI & Legal Tech",
+    "shortDescription": "The first AI assistant dedicated strictly to the Nigerian Constitution with verified citations.",
+    "whatWasDone": [
+      "Pioneered a specialized AI legal assistant utilizing a custom RAG pipeline for the Nigerian Constitution.",
+      "Scientifically indexed 320+ constitutional sections to provide exact, verified citations for every query.",
+      "Integrated YarnGPT for localized voice synthesis, making legal information accessible via native Nigerian voices.",
+      "Built a secure, high-fidelity chat experience with a focus on informational accuracy and platform trust."
+    ],
+    "image": "/src/assets/images/openlaw.png",
+    "technologies": [
+      "Next.js 14",
+      "OpenAI GPT-4o",
+      "Pinecone",
+      "Framer Motion"
+    ],
+    "githubLink": "https://github.com/abdulwarith001/openlaw",
+    "liveLink": "https://openlaw.live"
+  },
+  {
+    "id": "movieverse",
+    "title": "MovieVerse",
+    "category": "AI Discovery",
+    "shortDescription": "Semantic movie discovery engine using Groq and Llama 3.3 for thematic search.",
+    "whatWasDone": [
+      "Redefined entertainment discovery by replacing keyword filters with a powerful AI semantic search engine.",
+      "Leveraged Groq and Llama 3.3 to interpret complex natural language queries about film themes and mood.",
+      "Engineered a custom re-ranking algorithm combining TMDB metadata with AI thematic vectors.",
+      "Delivered a fluid Next.js interface for real-time cinematic exploration and discovery."
+    ],
+    "image": "/src/assets/images/movieverse.png",
+    "technologies": ["Next.js", "Groq SDK", "Llama 3.3", "TMDB API"],
+    "githubLink": "https://github.com/abdulwarith001/movieverse",
+    "liveLink": "https://movieverse.pxxl.click"
+  },
+  {
+    "id": "luckywho",
+    "title": "Luckywho",
+    "category": "Gaming & Raffle",
+    "shortDescription": "Transparent and fair Nigerian raffling platform for digital competitions.",
+    "whatWasDone": [
+      "Architected the high-availability backend for a transparent digital raffle and competition platform.",
+      "Developed the NGOZI SEQUENCE to provide verifiable digital randomness and 100% auditability for draws.",
+      "Built a secure wallet system and ticketing engine capable of handling high-velocity concurrent transactions.",
+      "Maintained strict ledger integrity for all financial movements and prize disbursements."
+    ],
+    "image": "/src/assets/images/luckywho.png",
+    "technologies": ["React", "NodeJS", "MongoDB", "Styled Components"],
+    "liveLink": "https://luckywho.ng"
+  },
+  {
+    "id": "always-secure",
+    "title": "Always Secure",
+    "category": "Cybersecurity",
+    "shortDescription": "Zero-knowledge password vault with client-side AES-256 encryption and burn-on-read.",
+    "whatWasDone": [
+      "Developed a 'Trust No One' security vault ensuring private data is encrypted before leaving the client.",
+      "Leveraged the Web Crypto API to implement high-grade end-to-end AES-256 encryption flows.",
+      "Engineered a unique 'burn-on-read' persistence layer using Upstash Redis for temporary shared secrets.",
+      "Designed an anonymous UI focus that prioritizes user privacy and data minimization."
+    ],
+    "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80",
+    "technologies": ["Next.js", "Upstash Redis", "Web Crypto API", "Nanoid"],
+    "githubLink": "https://github.com/abdulwarith001/always-secure"
+  }
+]
