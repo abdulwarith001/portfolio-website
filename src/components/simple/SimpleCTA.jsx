@@ -21,9 +21,8 @@ const SimpleCTA = () => {
             Get in touch
           </a>
           <a 
-            href="/cv.pdf" 
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/files/Abdulwahab Abdulwarith.pdf" 
+            download 
             className="w-full md:w-auto px-10 py-5 bg-white border border-gray-200 text-black rounded-full text-sm font-bold uppercase tracking-widest hover:border-black transition-all active:scale-95"
           >
             Download CV

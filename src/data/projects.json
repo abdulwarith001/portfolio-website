@@ -12,7 +12,7 @@
       "Developed an 'Esusu/Ajo' cooperative savings module that digitizes traditional group savings systems.",
       "Architected backend APIs and cloud infrastructure to support scalable and secure financial operations."
     ],
-    "image": "/src/assets/images/paypaxe.png",
+    "image": "/images/paypaxe.png",
     "technologies": [
       "React.js",
       "AWS",
@@ -38,7 +38,7 @@
       "Managed global state and financial data flows using Redux Toolkit for predictable and scalable state management.",
       "Released the application to production on the Google Play Store, achieving 100+ downloads."
     ],
-    "image": "/src/assets/images/paypaxe-app.png",
+    "image": "/images/paypaxe-app.png",
     "technologies": [
       "React Native",
       "TypeScript",
@@ -62,7 +62,7 @@
       "Developed backend workflows to process user uploads and transform them into interactive learning content.",
       "Integrated Paystack to enable credit based payments for advanced AI-powered study features."
     ],
-    "image": "/src/assets/images/noteiq.png",
+    "image": "/images/noteiq.png",
     "technologies": [
       "React",
       "TypeScript",
@@ -88,7 +88,7 @@
       "Managed complex global state with Redux Toolkit, keeping study data perfectly in sync across web and mobile platforms.",
       "Optimized the mobile UI for accessibility and distraction-free study sessions, making learning smoother and more enjoyable."
     ],
-    "image": "/src/assets/images/noteiq-app.png",
+    "image": "/images/noteiq-app.png",
     "technologies": [
       "React Native",
       "TypeScript",
@@ -141,7 +141,7 @@
       "Integrated YarnGPT for localized voice synthesis, making legal information accessible via native Nigerian voices.",
       "Built a secure, high-fidelity chat experience with a focus on informational accuracy and platform trust."
     ],
-    "image": "/src/assets/images/openlaw.png",
+    "image": "/images/openlaw.png",
     "technologies": [
       "Next.js 14",
       "OpenAI GPT-4o",
@@ -162,7 +162,7 @@
       "Engineered a custom re-ranking algorithm combining TMDB metadata with AI thematic vectors.",
       "Delivered a fluid Next.js interface for real-time cinematic exploration and discovery."
     ],
-    "image": "/src/assets/images/movieverse.png",
+    "image": "/images/movieverse.png",
     "technologies": ["Next.js", "Groq SDK", "Llama 3.3", "TMDB API"],
     "githubLink": "https://github.com/abdulwarith001/movieverse",
     "liveLink": "https://movieverse.pxxl.click"
@@ -178,7 +178,7 @@
       "Built a secure wallet system and ticketing engine capable of handling high-velocity concurrent transactions.",
       "Maintained strict ledger integrity for all financial movements and prize disbursements."
     ],
-    "image": "/src/assets/images/luckywho.png",
+    "image": "/images/luckywho.png",
     "technologies": ["React", "NodeJS", "MongoDB", "Styled Components"],
     "liveLink": "https://luckywho.ng"
   },
