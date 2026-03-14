@@ -10,6 +10,7 @@ import SimpleContact from './SimpleContact';
 import ProjectsPage from './ProjectsPage';
 import SimpleFooter from './SimpleFooter';
 import ProjectDetail from './ProjectDetail';
+import SEO from '../common/SEO';
 
 const SimpleWebsite = ({ onReset }) => {
   const [view, setView] = useState('home'); // 'home', 'projects', or 'detail'
@@ -51,6 +52,10 @@ const SimpleWebsite = ({ onReset }) => {
     >
       {view === 'home' && (
         <>
+          <SEO 
+            title="Full Stack Developer" 
+            description="Portfolio of Abdulwarith, a Full Stack Developer specializing in React, Node.js, and modern web technologies. Explore my projects and professional experience."
+          />
           <SimpleHeader />
           <main>
             <SimpleHero />
@@ -66,14 +71,26 @@ const SimpleWebsite = ({ onReset }) => {
       )}
 
       {view === 'projects' && (
-        <ProjectsPage onBack={handleBackToHome} onProjectSelect={handleProjectSelect} />
+        <>
+          <SEO 
+            title="All Projects" 
+            description="A comprehensive list of web development projects by Abdulwarith, featuring React, Tailwind CSS, and more."
+          />
+          <ProjectsPage onBack={handleBackToHome} onProjectSelect={handleProjectSelect} />
+        </>
       )}
 
       {view === 'detail' && activeProject && (
-        <ProjectDetail
-          project={activeProject} 
-          onClose={handleBackToHome} 
-        />
+        <>
+          <SEO 
+            title={`${activeProject.title} | Project`}
+            description={activeProject.description || `Details about ${activeProject.title} project by Abdulwarith.`}
+          />
+          <ProjectDetail
+            project={activeProject} 
+            onClose={handleBackToHome} 
+          />
+        </>
       )}
     </div>
   );
