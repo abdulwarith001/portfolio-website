@@ -1,74 +1,97 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 
 const SimpleFooter = () => {
-  const [textMousePos, setTextMousePos] = useState({ x: 0, y: 0 });
   const [isHoveringText, setIsHoveringText] = useState(false);
   const textRef = useRef(null);
-
-  // Smooth mouse movement for elastic spotlight and scaling
-  const [smoothMousePos, setSmoothMousePos] = useState({ x: 0, y: 0 });
-  const requestRef = useRef();
+  const charRefs = useRef([]);
+  const mousePosRef = useRef({ x: 0, y: 0 });
+  const smoothMousePosRef = useRef({ x: 0, y: 0 });
+  const isHoveringRef = useRef(false);
+  const requestRef = useRef(null);
 
   const characters = "ENIGMARE".split("");
-  const charRefs = useRef([]);
+
+  const updateCharacterDOM = useCallback(() => {
+    if (!textRef.current) return;
+    const textRect = textRef.current.getBoundingClientRect();
+    const maxDistance = 200;
+    const hovering = isHoveringRef.current;
+    const smoothX = smoothMousePosRef.current.x;
+    const smoothY = smoothMousePosRef.current.y;
+
+    characters.forEach((_, i) => {
+      const el = charRefs.current[i];
+      if (!el) return;
+
+      if (!hovering) {
+        el.style.transform = "scale(1)";
+        el.style.backgroundImage = "none";
+        el.style.webkitBackgroundClip = "none";
+        el.style.webkitTextFillColor = "inherit";
+        el.style.color = "inherit";
+        return;
+      }
+
+      const charRect = el.getBoundingClientRect();
+      const charCenterX = charRect.left + charRect.width / 2 - textRect.left;
+      const charCenterY = charRect.top + charRect.height / 2 - textRect.top;
+      const distance = Math.sqrt(
+        Math.pow(smoothX - charCenterX, 2) + Math.pow(smoothY - charCenterY, 2)
+      );
+
+      const scale =
+        distance > maxDistance ? 1 : 1 + 0.35 * (1 - distance / maxDistance);
+      el.style.transform = `scale(${scale})`;
+
+      const relX = smoothX - el.offsetLeft;
+      const relY = smoothY - el.offsetTop;
+      el.style.backgroundImage = `radial-gradient(circle 120px at ${relX}px ${relY}px, #000000 0%, rgba(0, 0, 0, 0.05) 90%)`;
+      el.style.webkitBackgroundClip = "text";
+      el.style.webkitTextFillColor = "transparent";
+      el.style.color = "transparent";
+    });
+  }, [characters]);
+
+  useEffect(() => {
+    isHoveringRef.current = isHoveringText;
+    if (!isHoveringText) {
+      updateCharacterDOM();
+    }
+  }, [isHoveringText, updateCharacterDOM]);
 
   const handleMouseMove = (e) => {
     if (!textRef.current) return;
     const rect = textRef.current.getBoundingClientRect();
-    setTextMousePos({
+    mousePosRef.current = {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
-    });
-  };
-
-  const animate = () => {
-    setSmoothMousePos((prev) => ({
-      x: prev.x + (textMousePos.x - prev.x) * 0.1, // Even smoother (0.1)
-      y: prev.y + (textMousePos.y - prev.y) * 0.1,
-    }));
-    requestRef.current = requestAnimationFrame(animate);
+    };
   };
 
   useEffect(() => {
-    requestRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(requestRef.current);
-  }, [textMousePos]);
+    const loop = () => {
+      if (isHoveringRef.current) {
+        smoothMousePosRef.current = {
+          x:
+            smoothMousePosRef.current.x +
+            (mousePosRef.current.x - smoothMousePosRef.current.x) * 0.15,
+          y:
+            smoothMousePosRef.current.y +
+            (mousePosRef.current.y - smoothMousePosRef.current.y) * 0.15,
+        };
+        updateCharacterDOM();
+      }
+      requestRef.current = requestAnimationFrame(loop);
+    };
 
-  // Function to calculate scale based on distance from smoothMousePos
-  const getCharScale = (index) => {
-    if (!isHoveringText || !charRefs.current[index] || !textRef.current)
-      return 1;
-
-    const charRect = charRefs.current[index].getBoundingClientRect();
-    const textRect = textRef.current.getBoundingClientRect();
-
-    // Character center relative to textRef
-    const charCenterX = charRect.left + charRect.width / 2 - textRect.left;
-    const charCenterY = charRect.top + charRect.height / 2 - textRect.top;
-
-    const distance = Math.sqrt(
-      Math.pow(smoothMousePos.x - charCenterX, 2) +
-        Math.pow(smoothMousePos.y - charCenterY, 2),
-    );
-
-    // Scale effect: max scale of 1.4 within 200px distance
-    const maxDistance = 200;
-    if (distance > maxDistance) return 1;
-
-    const scaleFactor = 1 + 0.4 * (1 - distance / maxDistance);
-    return scaleFactor;
-  };
+    requestRef.current = requestAnimationFrame(loop);
+    return () => {
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    };
+  }, [updateCharacterDOM]);
 
   return (
-    <footer className="relative bg-white text-black pt-12 md:pt-24 pb-0 px-6 overflow-hidden border-t border-gray-100 min-h-[40vh] md:min-h-[50vh] flex flex-col items-center justify-between">
-      {/* Noise Texture Overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.35] pointer-events-none mix-blend-overlay z-[1]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-      ></div>
-
+    <footer className="relative bg-white text-black pt-16 pb-0 px-6 overflow-hidden border-t border-gray-100 min-h-[35vh] flex flex-col items-center justify-between">
       {/* Background Dotted Pattern */}
       <div
         className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -78,49 +101,37 @@ const SimpleFooter = () => {
         }}
       ></div>
 
-      <div className="max-w-7xl w-full mx-auto relative z-10 flex flex-col items-center flex-grow">
-
-        {/* Middle Section: Info (Centered) */}
-        <div className="flex flex-col items-center space-y-8 mb-auto">
-          <div className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold flex items-center space-x-2">
-            <span>Built with</span>
-            <span className="text-red-500 animate-pulse text-xs">❤️</span>
-            <span>by</span>
-            <span className="text-black hover:opacity-70 transition-colors pointer-events-auto cursor-pointer border-b border-transparent hover:border-black">
-              Abdulwarith
-            </span>
+      <div className="max-w-5xl w-full mx-auto relative z-10 flex flex-col items-center">
+        {/* Info (Centered) */}
+        <div className="flex flex-col items-center space-y-4">
+          <div className="text-[11px] uppercase tracking-[0.25em] text-gray-400 font-semibold flex items-center space-x-2">
+            <span>Built by</span>
+            <span className="text-black font-bold">Abdulwarith</span>
+            <span>·</span>
+            <span>All rights reserved</span>
           </div>
         </div>
       </div>
 
-      {/* Large Text Section - Hidden on mobile, Flex on desktop */}
-      <div className="relative w-full select-none mt-12  overflow-hidden hidden md:flex justify-center py-12 pointer-events-none">
+      {/* Large Text Section */}
+      <div className="relative w-full select-none mt-12 overflow-hidden hidden md:flex justify-center py-10 pointer-events-none">
         <h2
           ref={textRef}
           onMouseMove={handleMouseMove}
           onMouseEnter={() => setIsHoveringText(true)}
           onMouseLeave={() => setIsHoveringText(false)}
-          className="flex text-[clamp(3rem,16vw,15rem)] font-black tracking-[0.1em] leading-[0.7] text-center uppercase pointer-events-auto cursor-default"
+          className="flex text-[clamp(3rem,15vw,14rem)] font-black tracking-[0.08em] leading-[0.7] text-center uppercase pointer-events-auto cursor-default"
           style={{
-            // The container holds the base colors
             color: "rgba(0, 0, 0, 0.05)",
           }}
         >
           {characters.map((char, i) => (
             <span
               key={i}
-              ref={(el) => (charRefs.current[i] = el)}
-              className="inline-block transition-all duration-300 ease-out origin-center relative"
-              style={{
-                transform: `scale(${getCharScale(i)})`,
-                // We apply the background-clip to each character for maximum reliability
-                backgroundImage: isHoveringText
-                  ? `radial-gradient(circle 120px at ${smoothMousePos.x - (charRefs.current[i]?.offsetLeft || 0)}px ${smoothMousePos.y - (charRefs.current[i]?.offsetTop || 0)}px, #000000 0%, rgba(0, 0, 0, 0.05) 90%)`
-                  : "none",
-                WebkitBackgroundClip: isHoveringText ? "text" : "none",
-                WebkitTextFillColor: isHoveringText ? "transparent" : "inherit",
-                color: isHoveringText ? "transparent" : "inherit",
+              ref={(el) => {
+                charRefs.current[i] = el;
               }}
+              className="inline-block transition-transform duration-100 ease-out origin-center relative"
             >
               {char}
             </span>
@@ -129,7 +140,7 @@ const SimpleFooter = () => {
       </div>
 
       {/* Decorative Top Border */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-gray-100 to-transparent"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
     </footer>
   );
 };

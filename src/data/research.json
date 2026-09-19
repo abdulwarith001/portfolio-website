@@ -1,0 +1,57 @@
+[
+  {
+    "id": "nylon-tokenizer",
+    "slug": "nylon-tokenizer",
+    "title": "Nylon-Tokenizer: Hardware-Aligned Byte-Level BPE with Domain-Aware Pretokenization for Compact Language Models",
+    "subtitle": "Co-designing subword vocabularies strictly to V = 65,536 for native uint16 serialization, halving 120B pretraining token storage to 240 GB.",
+    "category": "Systems & Tokenization",
+    "status": "Published",
+    "date": "September 2026",
+    "authors": [
+      {
+        "name": "Abdulwahab Abdulwarith",
+        "affiliation": "Enigmare AI Research",
+        "email": "abdulwarith@noteiq.live"
+      }
+    ],
+    "abstract": "Subword tokenization is a foundational architectural interface in autoregressive language models, dictating the trade-off between sequence length, vocabulary embedding parameter volume, and pretraining data storage. We present Nylon-Tokenizer, an open byte-level Byte-Pair Encoding (BPE) system co-designed around the systems and workload constraints of compact language models (≤ 1.5B parameters). Nylon-Tokenizer combines hardware-aligned token storage at the exact V = 65,536 boundary, domain-aware pretokenization, and affected-sequence BPE induction.",
+    "stats": {
+      "pages": "18 Pages",
+      "corpus": "120B Tokens",
+      "format": "uint16 Binary Shards",
+      "pdfSize": "707 KB"
+    },
+    "tags": ["Tokenization", "BPE", "uint16", "PyTorch", "Systems", "NLP"],
+    "pdfUrl": "/files/Nylon_Tokenizer_Technical_Report.pdf",
+    "readUrl": "/technical-reports/nylon-tokenizer"
+  },
+  {
+    "id": "nylon-v1-pretraining",
+    "slug": "nylon-v1",
+    "title": "Nylon V1: 338M Autoregressive Pretraining and Preference Alignment",
+    "subtitle": "Training a 337.96M parameter transformer on 5.36B tokens across 2× RTX 5090s with Supervised Fine-Tuning and Direct Preference Optimization.",
+    "category": "Pretraining & Alignment",
+    "status": "Published Weights",
+    "date": "August 2026",
+    "authors": [
+      {
+        "name": "Abdulwahab Abdulwarith",
+        "affiliation": "Enigmare AI Research",
+        "email": "abdulwarith@noteiq.live"
+      }
+    ],
+    "abstract": "We release Nylon V1, a 337.96M parameter autoregressive language model pretrained from scratch across 5.36 billion tokens on dual NVIDIA GeForce RTX 5090 GPUs in 34h 22m. The model sustained 41,161 tokens/sec throughput over 155,441 steps, converging to a validation loss of 2.1804 (8.8498 perplexity). We subsequently align the checkpoint through a 2-stage post-training pipeline: Supervised Fine-Tuning (SFT) over 283.7M tokens (validation perplexity 3.0042) and Direct Preference Optimization (DPO, beta=0.1) across 8,841 steps, yielding open-weights deployed via Ollama and Hugging Face.",
+    "stats": {
+      "parameters": "337.96M Params",
+      "pretrainingTokens": "5.36B Tokens",
+      "hardware": "2× RTX 5090",
+      "computeCost": "< $100 Total",
+      "throughput": "41,161 tok/s",
+      "sftPerplexity": "3.00 PPL",
+      "evalLoss": "0.64 DPO"
+    },
+    "tags": ["LLM", "Pretraining", "RTX 5090", "FlashAttention", "SFT", "DPO", "Ollama", "Hugging Face"],
+    "pdfUrl": null,
+    "readUrl": "https://huggingface.co/enigmare/nylon-v1"
+  }
+]

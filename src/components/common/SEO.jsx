@@ -2,12 +2,14 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, keywords, image, url, type = 'website' }) => {
-  const siteName = 'Abdulwarith Portfolio';
-  const fullTitle = title ? `${title} | ${siteName}` : siteName;
-  const defaultDescription = 'Full Stack Developer portfolio showcasing projects and experience.';
-  const defaultKeywords = 'Full Stack Developer, React, Node.js, Portfolio, Web Development';
-  const siteUrl = 'https://abdulwarith.dev'; // Replace with actual URL if known
-  const defaultImage = '/og-image.png'; // Placeholder for OG image
+  const siteName = 'Abdulwarith';
+  const fullTitle = title ? `${title} | ${siteName}` : 'Abdulwarith | Systems Engineering & Technical Reports';
+  const defaultDescription = 'Technical reports, compact language models, hardware-aligned tokenizers, and production systems engineering by Abdulwarith.';
+  const defaultKeywords = 'Tokenizer, Byte-Level BPE, uint16, Language Models, Systems Engineering, Technical Reports, PyTorch';
+  const siteUrl = 'https://www.enigmare.xyz';
+  const rawImage = image || '/images/og-preview.png';
+  const absoluteImage = rawImage.startsWith('http') ? rawImage : `${siteUrl}${rawImage}`;
+  const canonicalUrl = url || siteUrl;
 
   return (
     <Helmet>
@@ -20,18 +22,20 @@ const SEO = ({ title, description, keywords, image, url, type = 'website' }) => 
       <meta property="og:type" content={type} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description || defaultDescription} />
-      <meta property="og:image" content={image || defaultImage} />
-      <meta property="og:url" content={url || siteUrl} />
-      <meta property="og:site_name" content={siteName} />
+      <meta property="og:image" content={absoluteImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:site_name" content="Enigmare AI Research" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description || defaultDescription} />
-      <meta name="twitter:image" content={image || defaultImage} />
+      <meta name="twitter:image" content={absoluteImage} />
 
       {/* Canonical URL */}
-      {url && <link rel="canonical" href={url} />}
+      <link rel="canonical" href={canonicalUrl} />
     </Helmet>
   );
 };

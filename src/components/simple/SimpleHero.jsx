@@ -1,59 +1,58 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SimpleHero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center items-center px-6 pt-20 pb-10 bg-white overflow-hidden"
+      className="min-h-[80vh] flex flex-col justify-center items-center px-6 pt-28 pb-16 bg-white"
     >
-      <div className="max-w-xl w-full text-left space-y-10">
-        {/* Avatar Section */}
-        <div className="animate-fade-in">
-          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-indigo-100 overflow-hidden border-4 border-white shadow-sm ring-1 ring-gray-100">
-            <img
-              src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=b6e3f4"
-              alt="Avatar"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Typography Section */}
+      <div className="max-w-2xl w-full text-left space-y-8">
+        {/* Name & Focal Statement */}
         <div className="space-y-4">
-          <h1 className="text-4xl md:text-6xl font-black leading-[1.15] tracking-tighter text-black animate-slide-up">
-            Hello, I'm{" "}
-            <span className="text-gray-900 underline decoration-4 decoration-indigo-500/20 underline-offset-8">
-              Abdulwarith
-            </span>
-            .
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-black leading-none">
+            Abdulwarith.
           </h1>
 
-          <p className="text-base md:text-lg text-gray-500 font-medium leading-relaxed max-w-lg animate-slide-up-delayed">
-            Software Engineer specializing in Fintech, Ed.Tech, Mobile Apps, AI,
-            and Autonomous Agents.
+          <p className="text-2xl md:text-3xl font-bold text-gray-800 leading-snug tracking-tight max-w-xl">
+            I build language model training stacks from first principles, AI systems, and mobile products.
           </p>
         </div>
 
-        {/* Action Pills Section */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-1 animate-fade-in-delayed">
-          <a
-            href="#contact"
-            className="w-full sm:w-auto px-8 py-3.5 bg-black text-white text-sm font-bold rounded-2xl hover:bg-gray-800 transition-all active:scale-95 shadow-xl shadow-black/10 flex items-center justify-center"
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center gap-3 pt-2">
+          <Link
+            to="/technical-reports"
+            className="px-7 py-3.5 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-gray-800 transition-all active:scale-95 shadow-sm flex items-center space-x-2"
           >
-            Get In Touch
-          </a>
+            <span>Technical Reports</span>
+            <span className="text-[11px]">→</span>
+          </Link>
 
-          <div className="inline-flex items-center space-x-2 px-5 py-3.5 bg-green-50 rounded-full border border-green-100/50">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span className="text-[10px] font-bold text-green-700 uppercase tracking-widest whitespace-nowrap">
-              Available for new project
-            </span>
-          </div>
+          <a
+            href="/files/Abdulwahab Abdulwarith.pdf"
+            download="Abdulwarith_CV.pdf"
+            className="px-6 py-3.5 bg-white text-black border border-gray-200 text-xs font-bold uppercase tracking-wider rounded-xl hover:border-black transition-all active:scale-95 flex items-center space-x-2"
+          >
+            <span>Download CV</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+          </a>
         </div>
       </div>
-
-      {/* Decorative Gradient Blob (Optional refinement) */}
-      <div className="fixed -bottom-48 -right-48 w-96 h-96 bg-indigo-50/50 rounded-full blur-3xl pointer-events-none z-0"></div>
     </section>
   );
 };

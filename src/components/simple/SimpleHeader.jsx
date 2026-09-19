@@ -1,73 +1,101 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 const SimpleHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = ['About', 'Projects', 'Experience', 'Contact'];
+  const navItems = [
+    { name: "Projects", href: isHome ? "#projects" : "/#projects" },
+    { name: "Technical Reports", href: "/technical-reports" },
+    { name: "Capabilities", href: isHome ? "#capabilities" : "/#capabilities" },
+    { name: "About", href: isHome ? "#about" : "/#about" },
+    { name: "Contact", href: isHome ? "#contact" : "/#contact" }
+  ];
 
   return (
-    <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'pt-2' : 'pt-6'} px-4 animate-fade-in-down`}>
-      <header className={`w-full max-w-5xl mx-auto backdrop-blur-xl border border-gray-200/50 px-6 py-3 flex justify-between items-center rounded-3xl shadow-sm transition-all ${isScrolled ? 'bg-white/80' : 'bg-white/20'}`}>
-        <a href="#home" className="text-xl font-black tracking-tighter text-black hover:opacity-70 transition-opacity cursor-pointer">
-          Enigmare
-        </a>
+    <div
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? "pt-2" : "pt-6"
+      } px-4`}
+    >
+      <header
+        className={`w-full max-w-5xl mx-auto backdrop-blur-xl border border-gray-200/60 px-6 py-3 flex justify-between items-center rounded-2xl shadow-sm transition-all ${
+          isScrolled ? "bg-white/90" : "bg-white/70"
+        }`}
+      >
+        <Link
+          to="/"
+          className="text-lg font-black tracking-tight text-black hover:opacity-70 transition-opacity"
+        >
+          Abdulwarith
+        </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-10">
+        <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-[10px] font-bold text-gray-500 hover:text-black transition-colors uppercase tracking-[0.25em]"
+              key={item.name}
+              href={item.href}
+              className="text-xs font-semibold text-gray-500 hover:text-black transition-colors uppercase tracking-wider"
             >
-              {item}
+              {item.name}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center space-x-4">
-          <a href="#contact" className="hidden sm:inline-block px-5 py-2 bg-black text-white text-[10px] font-bold uppercase tracking-widest rounded-2xl hover:bg-gray-800 transition-all hover:shadow-md active:scale-95 text-center">
-            Contact Me
+        <div className="flex items-center space-x-3">
+          <a
+            href={isHome ? "#contact" : "/#contact"}
+            className="hidden sm:inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-gray-800 transition-all active:scale-95"
+          >
+            Contact
           </a>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-black hover:bg-gray-100 rounded-xl transition-colors"
+            className="md:hidden p-2 text-black hover:bg-gray-100 rounded-lg transition-colors"
+            aria-label="Toggle Navigation"
           >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </header>
 
       {/* Mobile Menu Overlay */}
-      <div className={`md:hidden absolute top-full left-4 right-4 mt-2 transition-all duration-300 origin-top ${isMenuOpen ? 'scale-y-100 opacity-100 visible' : 'scale-y-95 opacity-0 invisible'}`}>
-        <nav className="bg-white/90 backdrop-blur-2xl border border-gray-200/50 rounded-3xl p-6 shadow-xl flex flex-col space-y-6">
+      {isMenuOpen && (
+        <div className="md:hidden mt-2 bg-white/95 backdrop-blur-2xl border border-gray-200/70 rounded-2xl p-6 shadow-lg flex flex-col space-y-4">
           {navItems.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.name}
+              href={item.href}
               onClick={() => setIsMenuOpen(false)}
-              className="text-xs font-bold text-gray-500 hover:text-black transition-colors uppercase tracking-[0.3em] py-2 border-b border-gray-50"
+              className="text-xs font-bold text-gray-600 hover:text-black uppercase tracking-wider py-1 border-b border-gray-50"
             >
-              {item}
+              {item.name}
             </a>
           ))}
-          <a href="#contact" onClick={() => setIsMenuOpen(false)} className="w-full py-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest rounded-2xl hover:bg-gray-800 transition-all text-center">
-            Contact Me
+          <a
+            href={isHome ? "#contact" : "/#contact"}
+            onClick={() => setIsMenuOpen(false)}
+            className="w-full py-3 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-gray-800 transition-all text-center"
+          >
+            Contact
           </a>
-        </nav>
-      </div>
+        </div>
+      )}
     </div>
   );
 };
