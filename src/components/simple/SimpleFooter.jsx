@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const SimpleFooter = ({ onReset }) => {
+const SimpleFooter = () => {
   const [textMousePos, setTextMousePos] = useState({ x: 0, y: 0 });
   const [isHoveringText, setIsHoveringText] = useState(false);
   const textRef = useRef(null);
@@ -79,18 +79,6 @@ const SimpleFooter = ({ onReset }) => {
       ></div>
 
       <div className="max-w-7xl w-full mx-auto relative z-10 flex flex-col items-center flex-grow">
-        {/* Top Section: Reset Button (Centered) */}
-        <div className="flex flex-col items-center mb-16">
-          <button
-            onClick={onReset}
-            className="group flex flex-col items-center space-y-4 transition-all hover:opacity-70"
-          >
-            <div className="w-px h-16 bg-gradient-to-b from-transparent to-gray-200 group-hover:to-indigo-500 transition-all duration-500"></div>
-            <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-gray-400 group-hover:text-black">
-              CHOOSE ANOTHER PILL
-            </span>
-          </button>
-        </div>
 
         {/* Middle Section: Info (Centered) */}
         <div className="flex flex-col items-center space-y-8 mb-auto">

@@ -33,7 +33,7 @@ const SimpleAbout = () => {
             <div className="relative group">
               <div className="aspect-[4/5] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-2xl shadow-indigo-500/5 transition-transform duration-500 group-hover:scale-[1.02]">
                 <img
-                  src="/src/assets/images/portrait_1.png"
+                  src="/images/portrait_1.png"
                   alt="Abdulwarith Portrait 1"
                   className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
                 />
@@ -44,7 +44,7 @@ const SimpleAbout = () => {
             <div className="relative group">
               <div className="aspect-[4/5] bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-2xl shadow-indigo-500/5 transition-transform duration-500 group-hover:scale-[1.02]">
                 <img
-                  src="/src/assets/images/portrait_2.png"
+                  src="/images/portrait_2.png"
                   alt="Abdulwarith Portrait 2"
                   className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
                 />

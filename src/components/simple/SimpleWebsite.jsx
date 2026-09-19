@@ -12,24 +12,19 @@ import SimpleFooter from './SimpleFooter';
 import ProjectDetail from './ProjectDetail';
 import SEO from '../common/SEO';
 
-const SimpleWebsite = ({ onReset }) => {
+const SimpleWebsite = () => {
   const [view, setView] = useState('home'); // 'home', 'projects', or 'detail'
   const [activeProject, setActiveProject] = useState(null);
-  const scrollContainerRef = useRef(null);
 
   const handleProjectSelect = (project) => {
     setActiveProject(project);
     setView('detail');
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTop = 0;
-    }
+    window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
   const handleViewAll = () => {
     setView('projects');
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTop = 0;
-    }
+    window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
   const handleBackToHome = () => {
@@ -40,14 +35,15 @@ const SimpleWebsite = ({ onReset }) => {
       const projectsSection = document.getElementById('projects');
       if (projectsSection) {
         projectsSection.scrollIntoView({ behavior: 'auto' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'auto' });
       }
     }, 0);
   };
 
   return (
     <div 
-      ref={scrollContainerRef}
-      className={`fixed inset-0 z-50 bg-white overflow-y-auto overflow-x-hidden scroll-smooth animate-fade-in ${view !== 'home' ? 'scroll-auto' : 'scroll-smooth'}`}
+      className="min-h-screen w-full bg-white text-black animate-fade-in"
       style={{ fontFamily: "'Geom', sans-serif" }}
     >
       {view === 'home' && (
@@ -66,7 +62,7 @@ const SimpleWebsite = ({ onReset }) => {
             <SkillsMarquee />
             <SimpleContact />
           </main>
-          <SimpleFooter onReset={onReset} />
+          <SimpleFooter />
         </>
       )}
 
