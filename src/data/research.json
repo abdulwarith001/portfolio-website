@@ -26,6 +26,33 @@
     "readUrl": "/technical-reports/nylon-tokenizer"
   },
   {
+    "id": "nylon-data-curation",
+    "slug": "nylon-data-curation",
+    "title": "Two-Stage Pretraining Data Curation: Forging 120B-Token Foundation Intelligence and Precision Annealing for Compact Language Models",
+    "subtitle": "Decoupling foundation representation learning from specialist tool-calling under a Warmup-Stable-Decay cooldown with 15% replay anchors.",
+    "category": "Data Curation & Pretraining Protocol",
+    "status": "Published",
+    "date": "October 2026",
+    "authors": [
+      {
+        "name": "Abdulwahab Abdulwarith",
+        "affiliation": "Enigmare AI Research",
+        "email": "abdulwarith@noteiq.live"
+      }
+    ],
+    "abstract": "In compact autoregressive language models (<= 1.5B parameters), representational capacity is a strictly bounded resource. We present the Nylon Two-Stage Pretraining Data Curation Architecture, decoupling pretraining into Stage 1 Foundation Forging across 120B high-density tokens and Stage 2 Specialist Annealing across 30B tokens with saturated tool-calling schemas, negative instruction constraints, and an invariant 15% Replay Anchor defense against catastrophic forgetting.",
+    "stats": {
+      "pages": "14 Pages",
+      "stage1": "120B Tokens (Foundation)",
+      "stage2": "30B Tokens (Annealing)",
+      "replayAnchors": "15.0% Anti-Forgetting",
+      "pdfSize": "695 KB"
+    },
+    "tags": ["Data Curation", "Pretraining", "WSD Schedule", "Annealing", "MinHash LSH", "Replay Anchors", "Systems"],
+    "pdfUrl": "/files/Nylon_Data_Curation_Technical_Report.pdf",
+    "readUrl": "/technical-reports/nylon-data-curation"
+  },
+  {
     "id": "nylon-v1-pretraining",
     "slug": "nylon-v1",
     "title": "Nylon V1: 338M Autoregressive Pretraining and Preference Alignment",

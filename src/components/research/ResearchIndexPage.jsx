@@ -108,7 +108,13 @@ const ResearchIndexPage = () => {
                 <div className="space-y-3">
                   <h2
                     onClick={() => {
-                      if (paper.readUrl) navigate(paper.readUrl);
+                      if (paper.readUrl) {
+                        if (paper.readUrl.startsWith("http")) {
+                          window.open(paper.readUrl, "_blank", "noopener,noreferrer");
+                        } else {
+                          navigate(paper.readUrl);
+                        }
+                      }
                     }}
                     className={`text-2xl md:text-3xl font-black tracking-tight text-black leading-snug ${
                       paper.readUrl
@@ -175,10 +181,16 @@ const ResearchIndexPage = () => {
 
                     {paper.readUrl ? (
                       <button
-                        onClick={() => navigate(paper.readUrl)}
+                        onClick={() => {
+                          if (paper.readUrl.startsWith("http")) {
+                            window.open(paper.readUrl, "_blank", "noopener,noreferrer");
+                          } else {
+                            navigate(paper.readUrl);
+                          }
+                        }}
                         className="px-5 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-gray-800 transition-all flex items-center space-x-1.5 shadow-sm"
                       >
-                        <span>Read Technical Report</span>
+                        <span>{paper.readUrl.startsWith("http") ? "View on Hugging Face" : "Read Technical Report"}</span>
                         <span>→</span>
                       </button>
                     ) : (
