@@ -580,6 +580,42 @@ const DataCurationPaperPage = () => {
             </p>
           </section>
 
+          {/* Previous Technical Report Card */}
+          <div className="pt-8 border-t border-gray-100">
+            <div className="p-6 md:p-8 bg-gray-50 border border-gray-200 rounded-3xl space-y-4 hover:border-black transition-all group">
+              <div className="flex items-center space-x-2">
+                <span className="px-2.5 py-0.5 bg-black text-white rounded text-[10px] font-mono font-bold uppercase tracking-wider">
+                  Technical Report No. 01
+                </span>
+                <span className="text-gray-400 font-mono text-xs">September 2026</span>
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-xl md:text-2xl font-black text-black tracking-tight group-hover:text-gray-700 transition-colors">
+                  Nylon-Tokenizer: Hardware-Aligned Byte-Level BPE with Domain-Aware Pretokenization
+                </h3>
+                <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-sans">
+                  Co-designing subword vocabularies strictly to V = 65,536 for native uint16 serialization, halving 120B pretraining token storage to 240 GB and doubling OS page cache density.
+                </p>
+              </div>
+              <div className="pt-2 flex items-center space-x-3">
+                <Link
+                  to="/technical-reports/nylon-tokenizer"
+                  className="px-5 py-2.5 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-gray-800 transition-all flex items-center space-x-2 shadow-xs"
+                >
+                  <span>Read Technical Report No. 01</span>
+                  <span>→</span>
+                </Link>
+                <a
+                  href="/files/Nylon_Tokenizer_Technical_Report.pdf"
+                  download
+                  className="px-4 py-2.5 bg-white border border-gray-200 text-black text-xs font-bold uppercase tracking-wider rounded-xl hover:border-black transition-all"
+                >
+                  Download PDF
+                </a>
+              </div>
+            </div>
+          </div>
+
           {/* BibTeX Citation Box */}
           <div className="p-6 bg-gray-50 rounded-2xl border border-gray-200/80 space-y-4 font-sans">
             <div className="flex items-center justify-between">
@@ -598,6 +634,29 @@ const DataCurationPaperPage = () => {
               {bibtex}
             </pre>
           </div>
+
+          {/* Article Footer */}
+          <footer className="pt-10 border-t border-gray-100 text-center space-y-6 font-sans">
+            <h4 className="text-xl font-bold text-black">
+              Download the technical report PDF
+            </h4>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="/files/Nylon_Data_Curation_Technical_Report.pdf"
+                download="Nylon_Data_Curation_Technical_Report.pdf"
+                className="px-8 py-4 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-gray-800 transition-all shadow-md flex items-center space-x-2"
+              >
+                <Download className="w-4 h-4" />
+                <span>Download PDF (695 KB)</span>
+              </a>
+              <Link
+                to="/technical-reports"
+                className="px-8 py-4 bg-white text-black border border-gray-200 text-xs font-bold uppercase tracking-wider rounded-xl hover:border-black transition-all"
+              >
+                ← Back to Technical Reports
+              </Link>
+            </div>
+          </footer>
         </main>
       </div>
     </div>

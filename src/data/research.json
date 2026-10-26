@@ -1,31 +1,5 @@
 [
   {
-    "id": "nylon-tokenizer",
-    "slug": "nylon-tokenizer",
-    "title": "Nylon-Tokenizer: Hardware-Aligned Byte-Level BPE with Domain-Aware Pretokenization for Compact Language Models",
-    "subtitle": "Co-designing subword vocabularies strictly to V = 65,536 for native uint16 serialization, halving 120B pretraining token storage to 240 GB.",
-    "category": "Systems & Tokenization",
-    "status": "Published",
-    "date": "September 2026",
-    "authors": [
-      {
-        "name": "Abdulwahab Abdulwarith",
-        "affiliation": "Enigmare AI Research",
-        "email": "abdulwarith@noteiq.live"
-      }
-    ],
-    "abstract": "Subword tokenization is a foundational architectural interface in autoregressive language models, dictating the trade-off between sequence length, vocabulary embedding parameter volume, and pretraining data storage. We present Nylon-Tokenizer, an open byte-level Byte-Pair Encoding (BPE) system co-designed around the systems and workload constraints of compact language models (≤ 1.5B parameters). Nylon-Tokenizer combines hardware-aligned token storage at the exact V = 65,536 boundary, domain-aware pretokenization, and affected-sequence BPE induction.",
-    "stats": {
-      "pages": "18 Pages",
-      "corpus": "120B Tokens",
-      "format": "uint16 Binary Shards",
-      "pdfSize": "707 KB"
-    },
-    "tags": ["Tokenization", "BPE", "uint16", "PyTorch", "Systems", "NLP"],
-    "pdfUrl": "/files/Nylon_Tokenizer_Technical_Report.pdf",
-    "readUrl": "/technical-reports/nylon-tokenizer"
-  },
-  {
     "id": "nylon-data-curation",
     "slug": "nylon-data-curation",
     "title": "Two-Stage Pretraining Data Curation: Forging 120B-Token Foundation Intelligence and Precision Annealing for Compact Language Models",
@@ -51,6 +25,32 @@
     "tags": ["Data Curation", "Pretraining", "WSD Schedule", "Annealing", "MinHash LSH", "Replay Anchors", "Systems"],
     "pdfUrl": "/files/Nylon_Data_Curation_Technical_Report.pdf",
     "readUrl": "/technical-reports/nylon-data-curation"
+  },
+  {
+    "id": "nylon-tokenizer",
+    "slug": "nylon-tokenizer",
+    "title": "Nylon-Tokenizer: Hardware-Aligned Byte-Level BPE with Domain-Aware Pretokenization for Compact Language Models",
+    "subtitle": "Co-designing subword vocabularies strictly to V = 65,536 for native uint16 serialization, halving 120B pretraining token storage to 240 GB.",
+    "category": "Systems & Tokenization",
+    "status": "Published",
+    "date": "September 2026",
+    "authors": [
+      {
+        "name": "Abdulwahab Abdulwarith",
+        "affiliation": "Enigmare AI Research",
+        "email": "abdulwarith@noteiq.live"
+      }
+    ],
+    "abstract": "Subword tokenization is a foundational architectural interface in autoregressive language models, dictating the trade-off between sequence length, vocabulary embedding parameter volume, and pretraining data storage. We present Nylon-Tokenizer, an open byte-level Byte-Pair Encoding (BPE) system co-designed around the systems and workload constraints of compact language models (≤ 1.5B parameters). Nylon-Tokenizer combines hardware-aligned token storage at the exact V = 65,536 boundary, domain-aware pretokenization, and affected-sequence BPE induction.",
+    "stats": {
+      "pages": "18 Pages",
+      "corpus": "120B Tokens",
+      "format": "uint16 Binary Shards",
+      "pdfSize": "707 KB"
+    },
+    "tags": ["Tokenization", "BPE", "uint16", "PyTorch", "Systems", "NLP"],
+    "pdfUrl": "/files/Nylon_Tokenizer_Technical_Report.pdf",
+    "readUrl": "/technical-reports/nylon-tokenizer"
   },
   {
     "id": "nylon-v1-pretraining",

@@ -1123,6 +1123,42 @@ Output: Ordered merge list M; Final vocabulary V
             </pre>
           </section>
 
+          {/* Next Technical Report Card */}
+          <div className="pt-8 border-t border-gray-100">
+            <div className="p-6 md:p-8 bg-gray-50 border border-gray-200 rounded-3xl space-y-4 hover:border-black transition-all group">
+              <div className="flex items-center space-x-2">
+                <span className="px-2.5 py-0.5 bg-black text-white rounded text-[10px] font-mono font-bold uppercase tracking-wider">
+                  Next in Series · Report No. 02
+                </span>
+                <span className="text-gray-400 font-mono text-xs">October 2026</span>
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-xl md:text-2xl font-black text-black tracking-tight group-hover:text-gray-700 transition-colors">
+                  Two-Stage Pretraining Data Curation: Forging 120B-Token Foundation Intelligence and Precision Annealing
+                </h3>
+                <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-sans">
+                  How data curation is co-designed with Warmup-Stable-Decay optimization, 128-permutation MinHash LSH deduplication, and an invariant 15% replay anchor defense against catastrophic forgetting.
+                </p>
+              </div>
+              <div className="pt-2 flex items-center space-x-3">
+                <Link
+                  to="/technical-reports/nylon-data-curation"
+                  className="px-5 py-2.5 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-gray-800 transition-all flex items-center space-x-2 shadow-xs"
+                >
+                  <span>Read Technical Report No. 02</span>
+                  <span>→</span>
+                </Link>
+                <a
+                  href="/files/Nylon_Data_Curation_Technical_Report.pdf"
+                  download
+                  className="px-4 py-2.5 bg-white border border-gray-200 text-black text-xs font-bold uppercase tracking-wider rounded-xl hover:border-black transition-all"
+                >
+                  Download PDF
+                </a>
+              </div>
+            </div>
+          </div>
+
           {/* Article Footer */}
           <footer className="pt-10 border-t border-gray-100 text-center space-y-6">
             <h4 className="text-xl font-bold text-black">

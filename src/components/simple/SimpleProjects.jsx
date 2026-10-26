@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Download, ArrowRight } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Download, ArrowRight, Layers, FileText } from "lucide-react";
 import projectsData from "../../data/projects.json";
+import researchData from "../../data/research.json";
 
 const ProjectCard = ({ project, onProjectSelect }) => {
   const [activePlatform, setActivePlatform] = useState(() => {
@@ -208,88 +210,137 @@ const SimpleProjects = ({ onProjectSelect }) => {
           </p>
         </div>
 
-        {/* RESEARCH SPOTLIGHT: NYLON TOKENIZER */}
-        {nylonProject && (
-          <div className="bg-gray-50/80 border border-gray-200 rounded-3xl p-6 md:p-10 space-y-6 shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 bg-black text-white rounded-md text-[10px] font-mono font-bold uppercase tracking-wider">
-                <span>Technical Report</span>
-                <span>·</span>
-                <span>No. 01</span>
-              </div>
-
-              <a
-                href="/files/Nylon_Tokenizer_Technical_Report.pdf"
-                download="Nylon_Tokenizer_Technical_Report.pdf"
-                className="text-xs font-bold text-gray-600 hover:text-black transition-colors flex items-center space-x-1.5"
-              >
-                <Download className="w-3.5 h-3.5 text-gray-700" />
-                <span>Download Report (PDF 707 KB)</span>
-              </a>
+        {/* TECHNICAL REPORTS SHOWCASE */}
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-gray-100 pb-4">
+            <div className="space-y-1">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-gray-400">
+                Peer-Grade Systems Papers
+              </span>
+              <h3 className="text-2xl md:text-3xl font-black tracking-tight text-black">
+                Technical Reports
+              </h3>
             </div>
 
-            <div className="space-y-4">
-              <h3
-                onClick={() => onProjectSelect(nylonProject)}
-                className="text-2xl md:text-4xl font-black text-black hover:text-gray-700 transition-colors cursor-pointer tracking-tight"
-              >
-                {nylonProject.title}
-              </h3>
+            <Link
+              to="/technical-reports"
+              className="text-xs font-bold text-black hover:text-gray-600 transition-colors flex items-center space-x-1"
+            >
+              <span>Explore All Publications &amp; Checkpoints</span>
+              <span>→</span>
+            </Link>
+          </div>
 
-              <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium max-w-3xl">
-                {nylonProject.shortDescription}
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Report No. 02 (LATEST) */}
+            <div className="bg-white border-2 border-black rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md transition-all relative">
+              <div className="absolute top-4 right-4">
+                <span className="px-2.5 py-1 bg-black text-white text-[9px] font-mono font-bold uppercase tracking-wider rounded-md">
+                  Latest Publication
+                </span>
+              </div>
 
-              {/* Pipeline */}
-              <div className="pt-1">
-                <div className="inline-block font-mono text-[11px] text-gray-700 bg-white border border-gray-200 px-3.5 py-1.5 rounded-lg shadow-2xs">
-                  {nylonProject.pipeline}
+              <div className="space-y-4 pt-1">
+                <div className="flex items-center space-x-2 text-xs">
+                  <span className="px-2.5 py-0.5 bg-gray-100 text-black rounded text-[10px] font-mono font-bold uppercase tracking-wider">
+                    Report No. 02
+                  </span>
+                  <span className="text-gray-400 font-mono text-[11px]">October 2026</span>
+                </div>
+
+                <div className="space-y-2">
+                  <Link
+                    to="/technical-reports/nylon-data-curation"
+                    className="text-xl sm:text-2xl font-black text-black hover:text-gray-700 transition-colors tracking-tight leading-snug block"
+                  >
+                    Two-Stage Pretraining Data Curation: Forging 120B Foundation Intelligence &amp; Precision Annealing
+                  </Link>
+
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-sans line-clamp-3">
+                    Decoupling foundation representation learning from specialist tool-calling under a Warmup-Stable-Decay cooldown with 15% replay anchors against catastrophic forgetting.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
+                  <span className="px-2.5 py-1 bg-gray-50 border border-gray-200 text-gray-700 rounded-md">120B Foundation</span>
+                  <span className="px-2.5 py-1 bg-gray-50 border border-gray-200 text-gray-700 rounded-md">30B Anneal</span>
+                  <span className="px-2.5 py-1 bg-gray-50 border border-gray-200 text-gray-700 rounded-md">15% Anchors</span>
+                  <span className="px-2.5 py-1 bg-gray-50 border border-gray-200 text-gray-700 rounded-md">14 Pages</span>
                 </div>
               </div>
 
-              {/* Highlights */}
-              <ul className="space-y-2 text-xs md:text-sm text-gray-700 pt-2">
-                {nylonProject.engineeringHighlights.map((point, idx) => (
-                  <li key={idx} className="flex items-start space-x-2">
-                    <span className="text-black font-bold mt-0.5">•</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                <a
+                  href="/files/Nylon_Data_Curation_Technical_Report.pdf"
+                  download
+                  className="px-3.5 py-2 bg-gray-100 hover:bg-gray-200 text-black text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center space-x-1.5"
+                >
+                  <Download size={13} />
+                  <span>PDF (695 KB)</span>
+                </a>
+
+                <Link
+                  to="/technical-reports/nylon-data-curation"
+                  className="px-5 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-gray-800 transition-all flex items-center space-x-1.5 shadow-xs"
+                >
+                  <span>Read Report</span>
+                  <ArrowRight size={13} />
+                </Link>
+              </div>
             </div>
 
-            <div className="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-gray-200/70">
-              <div className="flex flex-wrap gap-1.5">
-                {nylonProject.technologies.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="text-[10px] font-semibold text-gray-600 bg-white border border-gray-200 px-2.5 py-1 rounded-md"
-                  >
-                    {tech}
+            {/* Report No. 01 */}
+            <div className="bg-gray-50/70 border border-gray-200 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-xs hover:border-gray-300 transition-all">
+              <div className="space-y-4 pt-1">
+                <div className="flex items-center space-x-2 text-xs">
+                  <span className="px-2.5 py-0.5 bg-gray-200 text-black rounded text-[10px] font-mono font-bold uppercase tracking-wider">
+                    Report No. 01
                   </span>
-                ))}
+                  <span className="text-gray-400 font-mono text-[11px]">September 2026</span>
+                </div>
+
+                <div className="space-y-2">
+                  <Link
+                    to="/technical-reports/nylon-tokenizer"
+                    className="text-xl sm:text-2xl font-black text-black hover:text-gray-700 transition-colors tracking-tight leading-snug block"
+                  >
+                    Nylon-Tokenizer: Hardware-Aligned Byte-Level BPE with Domain-Aware Pretokenization
+                  </Link>
+
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-sans line-clamp-3">
+                    Co-designing subword vocabularies strictly to V = 65,536 for native uint16 serialization, halving 120B pretraining token storage to 240 GB and doubling OS page cache density.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
+                  <span className="px-2.5 py-1 bg-white border border-gray-200 text-gray-700 rounded-md">V = 65,536</span>
+                  <span className="px-2.5 py-1 bg-white border border-gray-200 text-gray-700 rounded-md">uint16 Shards</span>
+                  <span className="px-2.5 py-1 bg-white border border-gray-200 text-gray-700 rounded-md">50% Saved</span>
+                  <span className="px-2.5 py-1 bg-white border border-gray-200 text-gray-700 rounded-md">18 Pages</span>
+                </div>
               </div>
 
-              <div className="flex items-center space-x-3">
+              <div className="pt-4 border-t border-gray-200/60 flex items-center justify-between gap-3">
                 <a
                   href="/files/Nylon_Tokenizer_Technical_Report.pdf"
-                  download="Nylon_Tokenizer_Technical_Report.pdf"
-                  className="hidden sm:inline-flex px-4 py-3 bg-white text-black border border-gray-200 text-xs font-bold uppercase tracking-wider rounded-xl hover:border-black transition-all items-center space-x-1.5"
+                  download
+                  className="px-3.5 py-2 bg-white hover:bg-gray-100 text-black border border-gray-200 text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center space-x-1.5"
                 >
-                  <Download className="w-3.5 h-3.5 text-gray-700" />
+                  <Download size={13} />
                   <span>PDF (707 KB)</span>
                 </a>
-                <button
-                  onClick={() => onProjectSelect(nylonProject)}
-                  className="px-6 py-3 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-gray-800 transition-all flex items-center space-x-2 shadow-sm active:scale-95"
+
+                <Link
+                  to="/technical-reports/nylon-tokenizer"
+                  className="px-5 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-gray-800 transition-all flex items-center space-x-1.5 shadow-xs"
                 >
-                  <span>Read Technical Report</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                  <span>Read Report</span>
+                  <ArrowRight size={13} />
+                </Link>
               </div>
             </div>
           </div>
-        )}
+        </div>
 
         {/* 4 Flagship Products Grid */}
         <div className="space-y-8 pt-6">
